@@ -20,6 +20,7 @@
   "homepage": "https://github.com/jillwones/news-summary-challenge#readme",
   "dependencies": {
     "esbuild": "^0.16.10",
-    "jest": "^29.3.1"
+    "jest": "^29.3.1",
+    "jest-fetch-mock": "^3.0.3"
   }
 }
