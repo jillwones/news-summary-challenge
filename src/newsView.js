@@ -36,6 +36,7 @@ class NewsView {
     });
 
     const data = this.model.getNews();
+    console.log(data);
 
     data.response.results.forEach((result) => {
       this.#createArticleEl(result);
@@ -45,8 +46,11 @@ class NewsView {
   // private functions
 
   #createArticleEl(result) {
-    const article = document.createElement("div");
+    const article = document.createElement("a");
     article.className = "article";
+    const url = result.webUrl;
+    article.setAttribute("href", url);
+    article.setAttribute("target", "_blank");
     this.mainContainerEl.append(article);
     const img = document.createElement("img");
     img.src = result.fields.thumbnail;
@@ -54,10 +58,15 @@ class NewsView {
     const headline = document.createElement("a");
     headline.textContent = result.webTitle;
     headline.className = "headline";
-    const url = result.webUrl;
-    headline.setAttribute("href", url);
-    headline.setAttribute("target", "_blank");
     article.append(headline);
+    const author = document.createElement("div");
+    author.textContent = result.fields.byline;
+    author.className = "byline";
+    article.append(author);
+    const abstract = document.createElement("div");
+    abstract.className = "abstract";
+    abstract.innerHTML = result.fields.standfirst;
+    article.append(abstract);
   }
 }
 
