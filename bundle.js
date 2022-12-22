@@ -57,7 +57,6 @@
             element.remove();
           });
           const data = this.model.getNews();
-          console.log(data);
           data.response.results.forEach((result) => {
             this.#createArticleEl(result);
           });

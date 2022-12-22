@@ -36,7 +36,7 @@ class NewsView {
     });
 
     const data = this.model.getNews();
-    console.log(data);
+    // console.log(data);
 
     data.response.results.forEach((result) => {
       this.#createArticleEl(result);

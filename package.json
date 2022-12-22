@@ -21,6 +21,7 @@
   "dependencies": {
     "esbuild": "^0.16.10",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "jest-fetch-mock": "^3.0.3"
   }
 }
