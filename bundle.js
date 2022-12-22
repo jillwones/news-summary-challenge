@@ -73,6 +73,7 @@
           headline.className = "headline";
           const url = result.webUrl;
           headline.setAttribute("href", url);
+          headline.setAttribute("target", "_blank");
           article.append(headline);
         }
       };
