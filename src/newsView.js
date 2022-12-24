@@ -31,16 +31,19 @@ class NewsView {
 
   viewArticles() {
     document.querySelector("#news-input").value = null;
-    document.querySelectorAll(".article").forEach((element) => {
+    document.querySelectorAll(".article, .error").forEach((element) => {
       element.remove();
     });
 
     const data = this.model.getNews();
-    // console.log(data);
-
-    data.response.results.forEach((result) => {
-      this.#createArticleEl(result);
-    });
+    
+    if (data.response.results.length === 0) {
+      this.#NoArticles();
+    } else {
+      data.response.results.forEach((result) => {
+        this.#createArticleEl(result);
+      });
+    }
   }
 
   // private functions
@@ -89,6 +92,13 @@ class NewsView {
     abstract.className = "abstract";
     abstract.innerHTML = result.fields.standfirst;
     return abstract;
+  }
+
+  #NoArticles() {
+    const noResults = document.createElement("div");
+    noResults.className = "error";
+    noResults.textContent = "No results"
+    this.mainContainerEl.append(noResults);
   }
 }
 

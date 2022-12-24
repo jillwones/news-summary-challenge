@@ -87,6 +87,10 @@ h1 {
   box-sizing: border-box;
 }
 
+.error {
+  justify-content: center;
+}
+
 @media (hover: hover) {
   #submit-button:hover {
     background-color: #333;
