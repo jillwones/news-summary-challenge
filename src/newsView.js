@@ -46,28 +46,51 @@ class NewsView {
   // private functions
 
   #createArticleEl(result) {
+    const article = this.#createArticleElement(result);
+    const img = this.#createImageElement(result);
+    const headline = this.#createHeadlineElement(result);
+    const author = this.#createAuthorElement(result);
+    const abstract = this.#createAbstractElement(result);
+    article.append(img, headline, author, abstract);
+    this.mainContainerEl.append(article);
+  }
+
+  #createArticleElement(result) {
     const article = document.createElement("a");
     article.className = "article";
     const url = result.webUrl;
     article.setAttribute("href", url);
     article.setAttribute("target", "_blank");
-    this.mainContainerEl.append(article);
+    return article;
+  }
+
+  #createImageElement(result) {
     const img = document.createElement("img");
     img.src = result.fields.thumbnail;
-    article.append(img);
+    return img;
+  }
+
+  #createHeadlineElement(result) {
     const headline = document.createElement("a");
     headline.textContent = result.webTitle;
     headline.className = "headline";
-    article.append(headline);
+    return headline;
+  }
+
+  #createAuthorElement(result) {
     const author = document.createElement("div");
     author.textContent = result.fields.byline;
     author.className = "byline";
-    article.append(author);
+    return author;
+  }
+
+  #createAbstractElement(result) {
     const abstract = document.createElement("div");
     abstract.className = "abstract";
     abstract.innerHTML = result.fields.standfirst;
-    article.append(abstract);
+    return abstract;
   }
 }
+
 
 module.exports = NewsView;
