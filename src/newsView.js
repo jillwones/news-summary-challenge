@@ -9,6 +9,7 @@ class NewsView {
 
     document.addEventListener("DOMContentLoaded", () => {
       this.client.getNewsData("", (data) => {
+        this.searchInput = "";
         this.model.setNews(data);
         this.viewArticles();
       });
@@ -17,6 +18,7 @@ class NewsView {
     submitButtonEl.addEventListener("click", () => {
       const searchInput = searchInputEl.value;
       this.client.getNewsData(searchInput, (data) => {
+        this.searchInput = searchInput;
         this.model.setNews(data);
         this.viewArticles();
       });
@@ -31,19 +33,16 @@ class NewsView {
 
   viewArticles() {
     document.querySelector("#news-input").value = null;
-    document.querySelectorAll(".article, .error").forEach((element) => {
+    document.querySelectorAll(".article, .results").forEach((element) => {
       element.remove();
     });
 
     const data = this.model.getNews();
-    
-    if (data.response.results.length === 0) {
-      this.#NoArticles();
-    } else {
-      data.response.results.forEach((result) => {
-        this.#createArticleEl(result);
-      });
-    }
+
+    this.#showResults();
+    data.response.results.forEach((result) => {
+      this.#createArticleEl(result);
+    });
   }
 
   // private functions
@@ -94,13 +93,18 @@ class NewsView {
     return abstract;
   }
 
-  #NoArticles() {
-    const noResults = document.createElement("div");
-    noResults.className = "error";
-    noResults.textContent = "No results"
-    this.mainContainerEl.append(noResults);
+  #showResults() {
+    const results = document.createElement("div");
+    results.className = "results";
+    if (this.searchInput === "") {
+      results.textContent = "Showing Latest Articles";
+    } else if (this.model.getNews().response.results.length === 0) {
+      results.textContent = "No results";
+    } else {
+      results.textContent = `Showing results for "${this.searchInput}"`;
+    }
+    this.mainContainerEl.append(results);
   }
 }
-
 
 module.exports = NewsView;

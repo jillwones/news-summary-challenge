@@ -87,8 +87,11 @@ h1 {
   box-sizing: border-box;
 }
 
-.error {
+.results{
+  display: flex;
+  align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 @media (hover: hover) {
