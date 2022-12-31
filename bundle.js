@@ -61,10 +61,10 @@
           const data = this.model.getNews();
           this.#showResults();
           data.response.results.forEach((result) => {
-            this.#createArticleEl(result);
+            this.#createArticle(result);
           });
         }
-        #createArticleEl(result) {
+        #createArticle(result) {
           const article = this.#createArticleElement(result);
           const img = this.#createImageElement(result);
           const headline = this.#createHeadlineElement(result);
