@@ -35,3 +35,7 @@ By separating the application logic into these three distinct components, it mak
 #### Mobile view
 
 ![Mobile view](./images/mobile.png)
+
+#### Tablet view
+
+![Tablet view](.images/tablet.png)
