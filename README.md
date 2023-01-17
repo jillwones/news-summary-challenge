@@ -38,4 +38,4 @@ By separating the application logic into these three distinct components, it mak
 
 #### Tablet view
 
-![Tablet view](.images/tablet.png)
+![Tablet view](./images/tablet.png)
