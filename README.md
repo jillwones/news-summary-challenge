@@ -24,4 +24,14 @@ By separating the application logic into these three distinct components, it mak
 
 ### Images
 
-ADD SCREENSHOTS OF WEB APP ON LARGE AND SMALL SCREENS
+#### Homepage
+
+![Homepage](./images/homepage.png)
+
+#### Search for 'Twitter'
+
+![Search page](./images/search.png)
+
+#### Mobile view
+
+![Mobile view](./images/mobile.png)
